@@ -718,6 +718,9 @@ class AutomatorDevice(object):
     def sleep(self):
         '''turn off screen in case of screen on.'''
         self.server.jsonrpc.sleep()
+        
+    def ison(self)
+        return self.server.jsonrpc.isScreenOn()
 
     @property
     def screen(self):
@@ -727,9 +730,14 @@ class AutomatorDevice(object):
         d.screen.on()
         d.screen.off()
         '''
-        @param_to_property(action=["on", "off"])
+        @param_to_property(action=["on", "off","ison"])
         def _screen(action):
-            return self.wakeup() if action == "on" else self.sleep()
+            if action == "on"
+                return self.wakeup()
+            elif action == "ison"
+                return self.ison()
+            else
+                return self.sleep()
         return _screen
 
     @property
